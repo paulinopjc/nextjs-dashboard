@@ -6,6 +6,7 @@ import {
   InvoicesTable,
   LatestInvoiceRaw,
   Revenue,
+  Customer, // <-- Add this line
 } from './definitions';
 import { formatCurrency } from './utils';
 
@@ -167,9 +168,9 @@ export async function fetchInvoiceById(id: string) {
   }
 }
 
-export async function fetchCustomers() {
+export async function fetchCustomers(): Promise<Customer[]> {
   try {
-    const customers = await sql<CustomerField[]>`
+    const result = await sql<Customer[]>`
       SELECT
         id,
         name,
@@ -179,12 +180,13 @@ export async function fetchCustomers() {
       ORDER BY name ASC
     `;
 
-    return customers;
+    return result; // ✅ this is the fix
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch all customers.');
   }
 }
+
 
 export async function fetchCustomersPages(query: string) {
   try {
