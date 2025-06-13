@@ -14,7 +14,6 @@ export default async function Page() {
 	// const query = searchParams?.query || '';
 	// const currentPage = Number(searchParams?.page) || 1;
   const customers = await fetchCustomers();
-  console.log(customers);
   return (
     <div className="w-full">
       <div className="flex w-full items-center justify-between">

@@ -4,7 +4,7 @@ import Search from '@/app/ui/search';
 import { Customer } from '@/app/lib/definitions';
 
 export default async function CustomersTable({
-  customers,
+  customers = [],
 }: {
   customers: Customer[];
 }) {
