@@ -23,7 +23,7 @@ export default async function Page() {
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
         
       </div>
-       <Suspense key={customers} fallback={<CustomersTableSkeleton />}>
+       <Suspense fallback={<CustomersTableSkeleton />}>
           <Table customers={customers} />
         </Suspense>
     </div>
